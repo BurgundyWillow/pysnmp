@@ -1,3 +1,6 @@
+import sys
+
+sys.path.append('/home/rennesauce/projects/pysnmpnewname/pysnmp')
 
 from pysnmp.hlapi.v3arch.asyncio.TrapListener import *
 from pysnmp.hlapi.v3arch.asyncore import *
@@ -20,7 +23,7 @@ auth_keyword_config = [USM_AUTH_HMAC96_MD5, USM_AUTH_HMAC96_SHA, USM_AUTH_HMAC12
 USM_AUTH_HMAC192_SHA256, USM_AUTH_HMAC256_SHA384,USM_AUTH_HMAC384_SHA512]
 
 
-authentication_passphrase = 'testauth234'
+authentication_passphrase = 'testsha234'
 
 privacy_protocol = ['aes-128','aes-256','aes-192','aes-192-blue-menthal','aes-256-blue-menthal','des-3','des']
 
@@ -28,7 +31,7 @@ privacy_config = [USM_PRIV_CFB128_AES, USM_PRIV_CFB256_AES, USM_PRIV_CFB192_AES,
 USM_PRIV_CFB192_AES_BLUMENTHAL, USM_PRIV_CFB256_AES_BLUMENTHAL, USM_PRIV_CBC168_3DES,
 USM_PRIV_CBC56_DES]
 
-privacy_passphrase = 'testpriv234'
+privacy_passphrase = 'testaes234'
 
 server_address = 'localhost'
 
@@ -85,10 +88,10 @@ priv_proto_config = None, auth_proto_method = None):
 )
 
     time.sleep(10)
-    """
+    
     send_notifications(snmpengine=snmpengine, auth_details=auth_detailsv2, server_address=server_address,
     server_port=server_port, notification_var=n_var1)
-    """
+    
     time.sleep(5)
 
     trap_list = trap_listener.getTrapList()
