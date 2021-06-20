@@ -121,19 +121,17 @@ class DgramAsyncioProtocol(asyncio.DatagramProtocol, AbstractAsyncioTransport):
 
             # Avoid deprecation warning for asyncio.async()
             if IS_PYTHON_344_PLUS:
-              self._lport = asyncio.ensure_future(c)
+              self._lport = self.loop.run_until_complete(c)
+              
 
             else: # pragma: no cover
               self._lport = getattr(asyncio, 'async')(c)
-
         except Exception:
             raise error.CarrierError(';'.join(traceback.format_exception(*sys.exc_info())))
 
         return self
 
     def closeTransport(self):
-        if self._lport is not None:
-            self._lport.cancel()
 
         if self.transport is not None:
             self.transport.close()
