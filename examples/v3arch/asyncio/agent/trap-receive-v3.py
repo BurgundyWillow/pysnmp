@@ -1,6 +1,3 @@
-import sys
-
-sys.path.append('/home/rennesauce/projects/pysnmpnewname/pysnmp')
 
 from pysnmp.hlapi.v3arch.asyncio.TrapListener import *
 from pysnmp.hlapi.v3arch.asyncore import *
@@ -114,6 +111,8 @@ priv_proto_config = None, auth_proto_method = None):
 
     time.sleep(10)
     
+
+
 
 auth_proto_method = 'auth-priv'
 
