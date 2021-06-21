@@ -133,9 +133,9 @@ class TrapListener():
             try:
                 resolved_oid = ObjectType(ObjectIdentity(oid), val).resolveWithMib(mib_view)
                 oid_and_val_dict['fully_printed'] = resolved_oid.prettyPrint()
-                oid_and_val_dict['symbol'] = ObjectIdentity(oid).resolveWithMib(mib_view).getMibSymbol()
+                oid_and_val_dict['symbol'] = resolved_oid[0].getLabel()
                 oid_and_val_dict['value'] = val
-                oid_and_val_dict['oid'] = str(ObjectIdentity(oid).resolveWithMib(mib_view).getOid())
+                oid_and_val_dict['oid'] = resolved_oid[0].getOid()
                 oid_and_val_dict['status'] = 'clean'
             
             except PyAsn1Error as err:
@@ -145,10 +145,10 @@ class TrapListener():
                 try:
                     resolved_only_oid = ObjectType(ObjectIdentity(oid)).resolveWithMib(mib_view)
 
-                    oid_and_val_dict['fully_printed'] = "%s %s"%(resolved_oid.prettyPrint(), val)
-                    oid_and_val_dict['symbol'] = ObjectIdentity(oid).resolveWithMib(mib_view).getMibSymbol()
+                    oid_and_val_dict['fully_printed'] = "%s %s"%(resolved_only_oid.prettyPrint(), val)
+                    oid_and_val_dict['symbol'] = resolved_only_oid[0].getLabel()
                     oid_and_val_dict['value'] = val
-                    oid_and_val_dict['oid'] = str(ObjectIdentity(oid).getOid())
+                    oid_and_val_dict['oid'] = resolved_only_oid[0].getOid()
                     oid_and_val_dict['status'] = 'dirty'
                 
                 except PyAsn1Error as err:

@@ -125,7 +125,7 @@ except ImportError:
 doclines = [x.strip() for x in (__doc__ or '').split('\n')]
 
 params.update({
-    'name': 'pysnmp',
+    'name': 'pysnmp-bw',
     'version': open(os.path.join('pysnmp', '__init__.py')).read().split('\'')[1],
     'description': doclines[0],
     'long_description': '\n'.join(doclines[1:]),
