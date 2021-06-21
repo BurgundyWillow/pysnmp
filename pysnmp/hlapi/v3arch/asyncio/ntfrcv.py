@@ -131,7 +131,7 @@ class TrapListener():
         for oid, val in var_binds:
             oid_and_val_dict = {}
             try:
-                resolved_oid = ObjectType(ObjectIdentity(oid), val).resolveWithMib(mib_view)
+                resolved_oid = ObjectType(ObjectIdentity(oid), val).resolveWithMib(mib_view, ignoreErrors=False)
                 oid_and_val_dict['fully_printed'] = resolved_oid.prettyPrint()
                 oid_and_val_dict['symbol'] = resolved_oid[0].getLabel()
                 oid_and_val_dict['value'] = val
@@ -143,7 +143,7 @@ class TrapListener():
                 print(err)
 
                 try:
-                    resolved_only_oid = ObjectType(ObjectIdentity(oid)).resolveWithMib(mib_view)
+                    resolved_only_oid = ObjectType(ObjectIdentity(oid)).resolveWithMib(mib_view, ignoreErrors=False)
 
                     oid_and_val_dict['fully_printed'] = "%s %s"%(resolved_only_oid.prettyPrint(), val)
                     oid_and_val_dict['symbol'] = resolved_only_oid[0].getLabel()
