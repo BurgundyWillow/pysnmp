@@ -11,7 +11,7 @@ from pysnmp.proto.api import v2c
 from pysnmp.smi.builder import ZipMibSource
 from pysnmp.smi.compiler import addMibCompiler
 from pysnmp.smi.error import SmiError
-
+import sys
 from pyasn1.error import PyAsn1Error
 from pyasn1.type.base import AbstractSimpleAsn1Item
 
@@ -984,15 +984,15 @@ class ObjectType(object):
 
         except PyAsn1Error as exc:
             err = ('MIB object %r having type %r failed to cast value '
-                   '%r: %s' % (self.__args[0].prettyPrint(),
-                               self.__args[0].getMibNode().getSyntax().__class__.__name__,
-                               self.__args[1],
+                   '%r: %s' % (self._args[0].prettyPrint(),
+                               self._args[0].getMibNode().getSyntax().__class__.__name__,
+                               self._args[1],
                                sys.exc_info()[1]))
 
             debug.logger & debug.FLAG_MIB and debug.logger(err)
 
             if (not ignoreErrors or
-                    not isinstance(self.__args[1], AbstractSimpleAsn1Item)):
+                    not isinstance(self._args[1], AbstractSimpleAsn1Item)):
                 raise SmiError(err)
 
         if rfc1902.ObjectIdentifier().isSuperTypeOf(
