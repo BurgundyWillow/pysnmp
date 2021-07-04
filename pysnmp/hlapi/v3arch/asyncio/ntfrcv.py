@@ -311,6 +311,7 @@ class TrapListener():
         self.transporter.runDispatcher()
     
     def getTrapList(self):
+        time.sleep(1)
         return self.trap_in_session
     
     def start_listener(self, server_address, server_port, timeout):
