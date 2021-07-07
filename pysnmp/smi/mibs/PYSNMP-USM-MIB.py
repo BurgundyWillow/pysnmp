@@ -373,7 +373,7 @@ Information about a particular USM user credentials.
 class _PysnmpUsmKeyAuthLocalized_Type(OctetString):
     subtypeSpec = OctetString.subtypeSpec
     subtypeSpec += ConstraintsUnion(
-        ValueSizeConstraint(8, 32),
+        ValueSizeConstraint(8, 64),
     )
     defaultHexValue = '0000000000000000'
 
@@ -396,7 +396,7 @@ User's localized key used for authentication.
 class _PysnmpUsmKeyPrivLocalized_Type(OctetString):
     subtypeSpec = OctetString.subtypeSpec
     subtypeSpec += ConstraintsUnion(
-        ValueSizeConstraint(8, 32),
+        ValueSizeConstraint(8, 256),
     )
     defaultHexValue = '0000000000000000'
 
@@ -419,7 +419,7 @@ User's localized key used for encryption.
 class _PysnmpUsmKeyAuth_Type(OctetString):
     subtypeSpec = OctetString.subtypeSpec
     subtypeSpec += ConstraintsUnion(
-        ValueSizeConstraint(8, 32),
+        ValueSizeConstraint(8, 64),
     )
     defaultHexValue = '0000000000000000'
 
@@ -442,7 +442,7 @@ User's non-localized key used for authentication.
 class _PysnmpUsmKeyPriv_Type(OctetString):
     subtypeSpec = OctetString.subtypeSpec
     subtypeSpec += ConstraintsUnion(
-        ValueSizeConstraint(8, 32),
+        ValueSizeConstraint(8, 256),
     )
     defaultHexValue = '0000000000000000'
 

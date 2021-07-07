@@ -47,7 +47,12 @@ class TrapListener():
         self.privProtocol = priv_protocol
         self.authPassphrase = auth_passphrase
         self.privPassphrase = priv_passphrase
-        self.main_loop = asyncio.get_event_loop()
+        try:
+            self.main_loop = asyncio.get_event_loop()
+        except RuntimeError:
+            asyncio.set_event_loop(asyncio.new_event_loop())
+            self.main_loop = asyncio.get_event_loop()
+        
         self.execution_future = None
         self.thread_for_executing = futures.ThreadPoolExecutor(max_workers=2)
         self.cbSec = cbSec
@@ -311,6 +316,7 @@ class TrapListener():
         self.transporter.runDispatcher()
     
     def getTrapList(self):
+        time.sleep(1)
         return self.trap_in_session
     
     def start_listener(self, server_address, server_port, timeout):
