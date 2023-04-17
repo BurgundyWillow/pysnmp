@@ -22,8 +22,7 @@ import asyncio
 from pysnmp.hlapi.v1arch.asyncio import *
 
 
-@asyncio.coroutine
-def sendone(snmpDispatcher, hostname, notifyType):
+async def sendone(snmpDispatcher, hostname, notifyType):
 
     iterator = sendNotification(
         snmpDispatcher,

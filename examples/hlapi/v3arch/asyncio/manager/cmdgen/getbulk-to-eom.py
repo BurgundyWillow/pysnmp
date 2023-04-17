@@ -21,8 +21,7 @@ import asyncio
 from pysnmp.hlapi.v3arch.asyncio import *
 
 
-@asyncio.coroutine
-def run(varBinds):
+async def run(varBinds):
 
     snmpEngine = SnmpEngine()
 

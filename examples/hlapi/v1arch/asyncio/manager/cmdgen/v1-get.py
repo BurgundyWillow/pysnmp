@@ -20,8 +20,7 @@ import asyncio
 from pysnmp.hlapi.v1arch.asyncio import *
 
 
-@asyncio.coroutine
-def run():
+async def run():
     snmpDispatcher = SnmpDispatcher()
 
     iterator = getCmd(

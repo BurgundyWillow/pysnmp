@@ -23,8 +23,7 @@ VB_PROCESSOR = CommandGeneratorVarBinds()
 isEndOfMib = lambda varBinds: not api.v2c.apiPDU.getNextVarBinds(varBinds)[1]
 
 
-@asyncio.coroutine
-def getCmd(snmpDispatcher, authData, transportTarget,
+async def getCmd(snmpDispatcher, authData, transportTarget,
            *varBinds, **options):
     """Creates a generator to perform SNMP GET query.
 
@@ -150,8 +149,7 @@ def getCmd(snmpDispatcher, authData, transportTarget,
     return future
 
 
-@asyncio.coroutine
-def setCmd(snmpDispatcher, authData, transportTarget,
+async def setCmd(snmpDispatcher, authData, transportTarget,
            *varBinds, **options):
     """Creates a generator to perform SNMP SET query.
 
@@ -277,8 +275,7 @@ def setCmd(snmpDispatcher, authData, transportTarget,
     return future
 
 
-@asyncio.coroutine
-def nextCmd(snmpDispatcher, authData, transportTarget,
+async def nextCmd(snmpDispatcher, authData, transportTarget,
             *varBinds, **options):
     """Creates a generator to perform SNMP GETNEXT query.
 
@@ -410,8 +407,7 @@ def nextCmd(snmpDispatcher, authData, transportTarget,
     return future
 
 
-@asyncio.coroutine
-def bulkCmd(snmpDispatcher, authData, transportTarget,
+async def bulkCmd(snmpDispatcher, authData, transportTarget,
             nonRepeaters, maxRepetitions, *varBinds, **options):
     """Creates a generator to perform SNMP GETBULK query.
 

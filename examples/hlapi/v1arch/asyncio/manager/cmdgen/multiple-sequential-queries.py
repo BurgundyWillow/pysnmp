@@ -22,8 +22,7 @@ import asyncio
 from pysnmp.hlapi.v1arch.asyncio import *
 
 
-@asyncio.coroutine
-def getone(snmpDispatcher, hostname):
+async def getone(snmpDispatcher, hostname):
 
     iterator = getCmd(
         snmpDispatcher,
@@ -48,8 +47,7 @@ def getone(snmpDispatcher, hostname):
             print(' = '.join([x.prettyPrint() for x in varBind]))
 
 
-@asyncio.coroutine
-def getall(snmpDispatcher, hostnames):
+async def getall(snmpDispatcher, hostnames):
     for hostname in hostnames:
         yield from getone(snmpDispatcher, hostname)
 

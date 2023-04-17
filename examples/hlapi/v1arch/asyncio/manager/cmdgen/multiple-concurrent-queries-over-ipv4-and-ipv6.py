@@ -22,8 +22,7 @@ import asyncio
 from pysnmp.hlapi.v1arch.asyncio import *
 
 
-@asyncio.coroutine
-def getone(snmpDispatcher, hostname):
+async def getone(snmpDispatcher, hostname):
 
     iterator = getCmd(
         snmpDispatcher,
