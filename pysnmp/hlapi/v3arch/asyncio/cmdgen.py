@@ -54,8 +54,7 @@ LCD = CommandGeneratorLcdConfigurator()
 isEndOfMib = lambda varBinds: not v2c.apiPDU.getNextVarBinds(varBinds)[1]
 
 
-@asyncio.coroutine
-def getCmd(snmpEngine, authData, transportTarget, contextData,
+async def getCmd(snmpEngine, authData, transportTarget, contextData,
            *varBinds, **options):
     """Creates a generator to perform SNMP GET query.
 
@@ -164,8 +163,7 @@ def getCmd(snmpEngine, authData, transportTarget, contextData,
     return future
 
 
-@asyncio.coroutine
-def setCmd(snmpEngine, authData, transportTarget, contextData,
+async def setCmd(snmpEngine, authData, transportTarget, contextData,
            *varBinds, **options):
     """Creates a generator to perform SNMP SET query.
 
@@ -275,8 +273,7 @@ def setCmd(snmpEngine, authData, transportTarget, contextData,
     return future
 
 
-@asyncio.coroutine
-def nextCmd(snmpEngine, authData, transportTarget, contextData,
+async def nextCmd(snmpEngine, authData, transportTarget, contextData,
             *varBinds, **options):
     """Creates a generator to perform SNMP GETNEXT query.
 
@@ -391,8 +388,7 @@ def nextCmd(snmpEngine, authData, transportTarget, contextData,
     return future
 
 
-@asyncio.coroutine
-def bulkCmd(snmpEngine, authData, transportTarget, contextData,
+async def bulkCmd(snmpEngine, authData, transportTarget, contextData,
             nonRepeaters, maxRepetitions, *varBinds, **options):
     """Creates a generator to perform SNMP GETBULK query.
 

@@ -22,8 +22,7 @@ __all__ = ['sendNotification']
 VB_PROCESSOR = NotificationOriginatorVarBinds()
 
 
-@asyncio.coroutine
-def sendNotification(snmpDispatcher, authData, transportTarget,
+async def sendNotification(snmpDispatcher, authData, transportTarget,
                      notifyType, *varBinds, **options):
     """Creates a generator to send SNMP notification.
 
